@@ -15,13 +15,16 @@ public class Usuario {
     @Transient
     private String confirmaSenha;
 
+    private String email;
+
     public Usuario(){}
 
-    public Usuario(Long id, String nome, String senha, String confirmaSenha) {
+    public Usuario(Long id, String nome, String senha, String confirmaSenha, String email) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;
         this.confirmaSenha = confirmaSenha;
+        this.email = email;
     }
 
     public Long getId() {
@@ -54,5 +57,13 @@ public class Usuario {
 
     public void setConfirmaSenha(String confirmaSenha) {
         this.confirmaSenha = confirmaSenha;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

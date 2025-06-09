@@ -4,6 +4,8 @@ import com.homero.tour.domain.Usuario;
 import com.homero.tour.repository.UsuarioRepository;
 import com.homero.tour.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/naninho")
+@RequestMapping("/usuarios")
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
@@ -42,6 +44,11 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id){
         usuarioService.deletar(id);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Usuario> login (@RequestBody String email){
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.login(email));
     }
 
 }

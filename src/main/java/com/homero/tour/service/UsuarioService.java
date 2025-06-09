@@ -47,4 +47,13 @@ public class UsuarioService {
             usuarioRepository.deleteById(id);
         }
     }
+    public Usuario login(String email){
+        Usuario usuario = usuarioRepository.findByEmail(email);
+
+        if (email == null){
+            throw new RuntimeException("Usuário não encontrado");
+        }
+
+        return usuario;
+    }
 }
