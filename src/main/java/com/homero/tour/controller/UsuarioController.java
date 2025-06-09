@@ -1,6 +1,7 @@
 package com.homero.tour.controller;
 
 import com.homero.tour.domain.Usuario;
+import com.homero.tour.dto.LoginRequest;
 import com.homero.tour.repository.UsuarioRepository;
 import com.homero.tour.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,15 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Usuario> login (@RequestBody String email){
-        return ResponseEntity.status(HttpStatus.OK).body(usuarioService.login(email));
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        try {
+            Usuario usuario = usuarioService.login(loginRequest.getEmail(), loginRequest.getSenha());
+
+            return ResponseEntity.ok(usuario);
+
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
     }
 
 }

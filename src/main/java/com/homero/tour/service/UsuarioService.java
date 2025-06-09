@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-
 public class UsuarioService {
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -47,11 +47,15 @@ public class UsuarioService {
             usuarioRepository.deleteById(id);
         }
     }
-    public Usuario login(String email){
+    public Usuario login(String email, String senha) {
         Usuario usuario = usuarioRepository.findByEmail(email);
 
-        if (email == null){
+        if (usuario == null) {
             throw new RuntimeException("Usuário não encontrado");
+        }
+
+        if (!usuario.getSenha().equals(senha)) {
+            throw new RuntimeException("Senha inválida");
         }
 
         return usuario;
