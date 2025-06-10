@@ -31,7 +31,7 @@ public class AvaliacaoController {
     }
      */
 
-    // --- NOSSO NOVO ENDPOINT PARA BUSCAR POR LOCAL ---
+    //nuevos
     @GetMapping("/local/{localId}")
     public ResponseEntity<List<Avaliacao>> listarAvaliacoesPorLocal(@PathVariable String localId) {
         // Você precisará criar este método no seu AvaliacaoService

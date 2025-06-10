@@ -29,6 +29,8 @@ public class Avaliacao {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    @NotBlank(message = "O ID do local não pode estar vazio.")
+    @Column(nullable = false)
     private String localId;
 
     public Avaliacao() {
