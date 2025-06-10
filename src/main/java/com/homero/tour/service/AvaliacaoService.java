@@ -21,7 +21,7 @@ public class AvaliacaoService {
         return avaliacaoRepository.save(avaliacao);
     }
 
-    public List<Avaliacao> listarTodas() {
-        return avaliacaoRepository.findAll();
+    public List<Avaliacao> listarPorLocal(String localId) {
+        return avaliacaoRepository.findByLocalId(localId);
     }
 }

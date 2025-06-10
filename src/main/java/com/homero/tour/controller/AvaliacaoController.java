@@ -24,9 +24,19 @@ public class AvaliacaoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoService.salvar(avaliacao));
     }
 
+    /*
     @GetMapping
     public ResponseEntity<List<Avaliacao>> listarAvaliacoes() {
         return ResponseEntity.ok(avaliacaoService.listarTodas());
+    }
+     */
+
+    // --- NOSSO NOVO ENDPOINT PARA BUSCAR POR LOCAL ---
+    @GetMapping("/local/{localId}")
+    public ResponseEntity<List<Avaliacao>> listarAvaliacoesPorLocal(@PathVariable String localId) {
+        // Você precisará criar este método no seu AvaliacaoService
+        List<Avaliacao> avaliacoes = avaliacaoService.listarPorLocal(localId);
+        return ResponseEntity.ok(avaliacoes);
     }
 }
 

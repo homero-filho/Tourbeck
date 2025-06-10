@@ -29,13 +29,16 @@ public class Avaliacao {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    private String localId;
+
     public Avaliacao() {
     }
 
-    public Avaliacao(String descricao, int avaliacao, Usuario usuario) {
+    public Avaliacao(String descricao, int avaliacao, Usuario usuario, String localId) {
         this.descricao = descricao;
         this.avaliacao = avaliacao;
         this.usuario = usuario;
+        this.localId = localId;
     }
 
     public Long getId() {
@@ -68,5 +71,13 @@ public class Avaliacao {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getLocalId() {
+        return localId;
+    }
+
+    public void setLocalId(String localId) {
+        this.localId = localId;
     }
 }
